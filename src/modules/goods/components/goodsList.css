@@ -1,0 +1,19 @@
+.wrap {
+  width: 188px;
+  height: 366px;
+}
+
+.wrap-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.secondary {
+  text-decoration: line-through;
+  color: #aaaaaa;
+}
+
+.sale-rate {
+  color: red;
+}
