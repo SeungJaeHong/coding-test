@@ -1,17 +1,35 @@
 import { FC, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selGoodsState } from '../stores/goods.selector';
-
+import { batch, useDispatch, useSelector } from 'react-redux';
+import { useInfiniteScroll } from '../../common/hooks/useInfiniteScroll';
 import { GoodsList } from '../components';
-import { effSearchGoods } from '../stores';
+import { actSearchGoodsParams, effSearchGoods } from '../stores';
+import { selGoodsState, selSearchGoodsParams } from '../stores/goods.selector';
 
 export const GoodsListContainer: FC = () => {
   const dispatch = useDispatch();
   const goodsState = useSelector(selGoodsState);
+  const searchParams = useSelector(selSearchGoodsParams);
 
-  useEffect(() => {
-    dispatch(effSearchGoods({ goodsName: '', page: 1, size: 1 }));
-  }, [dispatch]);
+  const observingRef = useInfiniteScroll(
+    {
+      currentPage: searchParams.page,
+      loading: goodsState.loading,
+      hasNextPage: goodsState.hasNextPage,
+    },
+    (page) => {
+      batch(() => {
+        dispatch(actSearchGoodsParams({ page }));
+        dispatch(effSearchGoods());
+      });
+    }
+  );
 
-  return <GoodsList {...goodsState} />;
+  useEffect(() => {}, []);
+
+  return (
+    <>
+      <GoodsList {...goodsState} />
+      <div ref={observingRef} />
+    </>
+  );
 };

@@ -2,9 +2,11 @@ export interface CommonDataResponse<T> {
   data: T;
 }
 
-interface ListResponse<T> {
+export interface PagingResponse<T> {
   list: T[];
+  hasNextPage: boolean;
+  totalCount: number;
 }
 
-export interface CommonListResponse<T>
-  extends CommonDataResponse<ListResponse<T>> {}
+export interface CommonPagingResponse<T>
+  extends CommonDataResponse<PagingResponse<T>> {}

@@ -4,7 +4,8 @@ import { GoodsModel } from '../models';
 
 export const toGoodsParams = (params?: SearchGoodsParams) => {
   return {
-    goodsName: params?.goodsName || '',
+    keyword: params?.keyword || '',
+    filters: params?.filters || [],
     page: params?.page || DEFAULT_PAGE,
     size: params?.size || DEFAULT_SIZE,
   };

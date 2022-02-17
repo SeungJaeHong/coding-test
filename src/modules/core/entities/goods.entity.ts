@@ -13,9 +13,11 @@ export interface GoodsEntity {
   isExclusive: boolean;
 }
 
+export type SearchFilter = 'isSale' | 'isSoldOut' | 'isExclusive';
+
 export interface SearchGoodsParams {
-  goodsName: string;
-  filters?: string[];
+  keyword: string;
+  filters: SearchFilter[];
   page: number;
   size: number;
 }
