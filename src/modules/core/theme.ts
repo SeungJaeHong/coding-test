@@ -7,7 +7,7 @@ import {
 export const theme = {
   color: COLOR_DICTIONARY,
   fontSize: FONT_SIZE_DICTIONARY,
-};
+} as const;
 
 export type ThemeType = typeof theme;
 
