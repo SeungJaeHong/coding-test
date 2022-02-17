@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { batch, useDispatch, useSelector } from 'react-redux';
 import { useInfiniteScroll } from '../../common/hooks/useInfiniteScroll';
 import { GoodsList } from '../components';
@@ -23,8 +23,6 @@ export const GoodsListContainer: FC = () => {
       });
     }
   );
-
-  useEffect(() => {}, []);
 
   return (
     <>
