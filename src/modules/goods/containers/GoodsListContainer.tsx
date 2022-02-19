@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { batch, useDispatch, useSelector } from 'react-redux';
 import { useInfiniteScroll } from '../../common/hooks/useInfiniteScroll';
-import { GoodsList } from '../components';
-import { actSearchGoodsParams, effSearchGoods } from '../stores';
+import { GoodsList, SearchBoxDivider } from '../components';
+import { actSearchGoodsParamsApply, effSearchGoods } from '../stores';
 import { selGoodsState, selSearchGoodsParams } from '../stores/goods.selector';
 
 export const GoodsListContainer: FC = () => {
@@ -18,16 +18,17 @@ export const GoodsListContainer: FC = () => {
     },
     (page) => {
       batch(() => {
-        dispatch(actSearchGoodsParams({ page }));
-        dispatch(effSearchGoods());
+        dispatch(actSearchGoodsParamsApply({ page }));
+        dispatch(effSearchGoods({ reset: page === 1 }));
       });
     }
   );
 
   return (
     <>
+      <SearchBoxDivider />
       <GoodsList {...goodsState} />
-      <div ref={observingRef} />
+      <div ref={observingRef} style={{ height: '10px' }} />
     </>
   );
 };

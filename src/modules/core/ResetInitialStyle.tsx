@@ -31,7 +31,6 @@ export const ResetInitialStyle = createGlobalStyle`
     padding: 0;
     border: 0;
     font-size: 100%;
-    font: inherit;
     vertical-align: baseline;
   }
 
@@ -43,7 +42,7 @@ export const ResetInitialStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 14px;
-    line-height: 1.43;
+    line-height: 1;
     min-width: 320px;
   }
 
@@ -62,7 +61,6 @@ export const ResetInitialStyle = createGlobalStyle`
     padding: 0;
     color: inherit;
     direction: ltr;
-    font-family: inherit;
   }
 
   button {

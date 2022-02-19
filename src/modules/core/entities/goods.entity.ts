@@ -1,3 +1,5 @@
+import { GoodsFilterType } from '../../common/constants';
+
 export interface GoodsEntity {
   goodsNo: number;
   goodsName: string;
@@ -13,11 +15,9 @@ export interface GoodsEntity {
   isExclusive: boolean;
 }
 
-export type SearchFilter = 'isSale' | 'isSoldOut' | 'isExclusive';
-
 export interface SearchGoodsParams {
   keyword: string;
-  filters: SearchFilter[];
+  filters: GoodsFilterType[];
   page: number;
   size: number;
 }

@@ -2,7 +2,7 @@ import {
   MockGoodsList,
   mockGoodsList,
 } from '../../goods/fixtures/goodsList.fixture';
-import { SearchGoodsParams } from '../entities';
+import { GoodsEntity, SearchGoodsParams } from '../entities';
 
 export const goodsRepository = {
   searchGoods(params: SearchGoodsParams): Promise<MockGoodsList> {
@@ -18,14 +18,53 @@ async function mockRequest({
 }: SearchGoodsParams) {
   await timeout();
 
-  const filtered = mockGoodsList.filter((goods) => {
-    return (
-      filters.every((filter) => goods[filter]) &&
-      (goods.brandName.includes(keyword) || goods.goodsName.includes(keyword))
-    );
-  });
+  const searchFields = ['brandName', 'goodsName'];
 
-  return toPaginatedData(filtered, page, size);
+  let goodsList = mockGoodsList;
+  const shouldFilterSoldOut = filters.includes('isSoldOut') === false;
+  if (shouldFilterSoldOut) {
+    goodsList = mockGoodsList.filter((goods) => !goods.isSoldOut);
+  }
+
+  if (keyword === '' && filters.length === 0) {
+    return toPaginatedData(goodsList, page, size);
+  }
+
+  if (keyword) {
+    if (filters.length) {
+      return toPaginatedData(
+        goodsList.filter(
+          (goods) =>
+            filters.some((filter) => goods[filter]) ||
+            searchFields.some((field) =>
+              (goods[field as unknown as keyof GoodsEntity] as string).includes(
+                keyword
+              )
+            )
+        ),
+        page,
+        size
+      );
+    }
+
+    return toPaginatedData(
+      goodsList.filter((goods) =>
+        searchFields.some((field) =>
+          (goods[field as unknown as keyof GoodsEntity] as string).includes(
+            keyword
+          )
+        )
+      ),
+      page,
+      size
+    );
+  }
+
+  return toPaginatedData(
+    goodsList.filter((goods) => filters.some((filter) => goods[filter])),
+    page,
+    size
+  );
 }
 
 const timeout = (ms = 300) => new Promise((resolve) => setTimeout(resolve, ms));

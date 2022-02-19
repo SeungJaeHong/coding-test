@@ -8,7 +8,7 @@ export const AppRoutes: FC = () => (
     <Route element={<PageLayout />}>
       <Route path="/" element={<LazyGoodsListPage />} />
       <Route path="/goods" element={<LazyGoodsListPage />} />
-      <Route path="*" element={<Navigate to="/" />} />
     </Route>
+    <Route path="*" element={<Navigate to="/" />} />
   </Routes>
 );

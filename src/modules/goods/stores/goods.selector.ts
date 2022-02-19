@@ -1,5 +1,5 @@
-import { RootStateType } from '../../rootStore';
 import { createDraftSafeSelector, createSelector } from '@reduxjs/toolkit';
+import { RootStateType } from '../../rootStore';
 
 const selGoodsStore = (state: RootStateType) => state.goods;
 
@@ -18,4 +18,9 @@ export const drfSearchGoodsState = createDraftSafeSelector(
 export const selSearchGoodsParams = createSelector(
   selGoodsStore,
   (state) => state.params
+);
+
+export const selShowSearchInput = createSelector(
+  selGoodsStore,
+  (state) => state.showInput
 );

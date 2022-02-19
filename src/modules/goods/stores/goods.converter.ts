@@ -2,7 +2,7 @@ import { DEFAULT_PAGE, DEFAULT_SIZE } from '../../core/constants';
 import { GoodsEntity, SearchGoodsParams } from '../../core/entities';
 import { GoodsModel } from '../models';
 
-export const toGoodsParams = (params?: SearchGoodsParams) => {
+export const toGoodsParams = (params?: Partial<SearchGoodsParams>) => {
   return {
     keyword: params?.keyword || '',
     filters: params?.filters || [],
@@ -23,7 +23,7 @@ export const toGoodsModel = (goods: GoodsEntity) =>
     normalPrice: goods.normalPrice || 0,
     isSale: goods.isSale || false,
     saleRate: goods.saleRate || 0,
-    isSoldOut: goods.isSoldOut || true,
+    isSoldOut: goods.isSoldOut || false,
     isExclusive: goods.isExclusive || false,
   } as GoodsModel);
 

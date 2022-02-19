@@ -2,26 +2,32 @@ import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import { ICON_DICTIONARY } from '../../core/constants';
-
-export const FixedHeader = styled.header`
-  width: 375px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-`;
+import { flexWrapCenterCss, flexWrapCss } from '../../core/utils';
 
 export const PageLayout: FC = () => (
-  <div>
-    <FixedHeader>
-      <img
-        width="280"
-        height="16"
-        src={ICON_DICTIONARY.LOGO}
-        alt="musinsa-logo"
-      />
-    </FixedHeader>
-    <main>
+  <PageWrapper>
+    <Header>
+      <img src={ICON_DICTIONARY.LOGO} alt="musinsa-logo" />
+    </Header>
+    <Main>
       <Outlet />
-    </main>
-  </div>
+    </Main>
+  </PageWrapper>
 );
+
+const PageWrapper = styled.div`
+  max-width: 400px;
+  height: 100%;
+  margin: 0 auto;
+`;
+
+const Header = styled.header`
+  ${flexWrapCenterCss};
+  height: 50px;
+`;
+
+const Main = styled.main`
+  ${flexWrapCss};
+  padding: 0;
+  margin: 0 auto;
+`;

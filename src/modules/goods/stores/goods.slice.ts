@@ -3,13 +3,18 @@ import { createSlice } from '@reduxjs/toolkit';
 import { SearchGoodsParams } from '../../core/entities';
 import { GoodsModel } from '../models';
 import { toGoodsParams } from './goods.converter';
-import { actSearchGoodsParams, effSearchGoods } from './goods.effect';
+import {
+  actSearchGoodsParamsApply,
+  actToggleShowSearchInput,
+  effSearchGoods,
+} from './goods.effect';
 
 interface GoodsState {
   loading: boolean;
   goodsList: GoodsModel[];
   hasNextPage: boolean;
   totalCount: number;
+  showInput: boolean;
   params: SearchGoodsParams;
 }
 
@@ -19,6 +24,7 @@ export function getInitGoodsState() {
     goodsList: [],
     hasNextPage: true,
     totalCount: 0,
+    showInput: false,
     params: toGoodsParams(),
   };
   return result;
@@ -34,9 +40,12 @@ export const goodsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(actSearchGoodsParams, (state, { payload }) => {
+      .addCase(actSearchGoodsParamsApply, (state, { payload }) => {
         state.loading = true;
         state.params = { ...state.params, ...payload };
+      })
+      .addCase(actToggleShowSearchInput, (state) => {
+        state.showInput = !state.showInput;
       })
       .addCase(effSearchGoods.pending, (state) => {
         state.loading = true;
