@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { batch, useDispatch, useSelector } from 'react-redux';
 import { useInfiniteScroll } from '../../common/hooks/useInfiniteScroll';
-import { GoodsList, SearchBoxDivider } from '../components';
+import { GoodsList } from '../components';
 import { actSearchGoodsParamsApply, effSearchGoods } from '../stores';
 import { selGoodsState, selSearchGoodsParams } from '../stores/goods.selector';
 
@@ -26,7 +26,6 @@ export const GoodsListContainer: FC = () => {
 
   return (
     <>
-      <SearchBoxDivider />
       <GoodsList {...goodsState} />
       <div ref={observingRef} style={{ height: '10px' }} />
     </>

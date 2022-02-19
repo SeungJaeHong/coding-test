@@ -1,8 +1,6 @@
-import { CommonPagingResponse, GoodsEntity } from '../../core/entities';
+import { GoodsEntity } from '../modules/core/entities';
 
-export interface MockGoodsList extends CommonPagingResponse<GoodsEntity> {}
-
-export const mockGoodsList: GoodsEntity[] = [
+export const goodsJson: GoodsEntity[] = [
   // https://static.msscdn.net/musinsaUI/homework/data/goods0.json
   {
     goodsNo: 1759350,

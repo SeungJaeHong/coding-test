@@ -58,6 +58,7 @@ export const goodsSlice = createSlice({
       })
       .addCase(effSearchGoods.rejected, (state) => {
         state.loading = false;
+        state.hasNextPage = false;
       });
   },
 });

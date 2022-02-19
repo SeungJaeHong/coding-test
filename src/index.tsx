@@ -4,9 +4,12 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import App from './App';
+import { worker } from './mock-server';
 import { ResetInitialStyle } from './modules/core/ResetInitialStyle';
 import { theme } from './modules/core/theme';
 import { store } from './modules/rootStore';
+
+worker.start();
 
 ReactDOM.render(
   <React.StrictMode>

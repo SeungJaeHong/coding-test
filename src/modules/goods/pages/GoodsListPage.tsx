@@ -1,11 +1,6 @@
 import { FC } from 'react';
-import { GoodsListContainer, GoodsSearchBoxContainer } from '../containers';
+import { GoodsListContainer } from '../containers';
 
-const GoodsListPage: FC = () => (
-  <>
-    <GoodsSearchBoxContainer />
-    <GoodsListContainer />
-  </>
-);
+const GoodsListPage: FC = () => <GoodsListContainer />;
 
 export default GoodsListPage;
