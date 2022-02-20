@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { PageLayout } from './common/components/PageLayout';
+import { PageContainer } from './goods/containers';
 import { LazyGoodsListPage } from './goods/routes';
 
 export const AppRoutes: FC = () => (
   <Routes>
-    <Route element={<PageLayout />}>
+    <Route element={<PageContainer />}>
       <Route path="/" element={<LazyGoodsListPage />} />
       <Route path="/goods" element={<LazyGoodsListPage />} />
     </Route>

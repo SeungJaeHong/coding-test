@@ -1,2 +1,3 @@
+export * from './DataEmpty';
 export * from './PageLayout';
-export * from './Spinner';
+export * from './SimpleSpinner';

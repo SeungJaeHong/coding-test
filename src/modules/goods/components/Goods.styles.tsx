@@ -101,3 +101,18 @@ export const GoodsNameWrapper = styled.div`
 export const SalePriceWrapper = styled.div`
   ${flexWrapCenterBetweenCss};
 `;
+
+export const SpinnerWrapper = styled.div`
+  ${flexWrapCenterCss};
+  padding: 20px 0px 60px;
+`;
+
+export const DataEmptyWrapper = styled.div`
+  ${flexWrapCenterCss};
+  flex: 1;
+  height: 100%;
+`;
+
+export const ScrollObserver = styled.div`
+  height: 10px;
+`;

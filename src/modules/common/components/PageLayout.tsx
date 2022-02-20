@@ -3,15 +3,16 @@ import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import { ICON_DICTIONARY } from '../../core/constants';
 import { flexWrapCenterCss, flexWrapCss } from '../../core/utils';
-import { SearchBoxDivider } from '../../goods/components';
-import { GoodsSearchBoxContainer } from '../../goods/containers';
 
-export const PageLayout: FC = () => (
+interface PageLayoutProps {
+  header?: React.ReactNode;
+}
+
+export const PageLayout: FC<PageLayoutProps> = ({ header }) => (
   <PageWrapper>
     <Header>
       <img src={ICON_DICTIONARY.LOGO} alt="musinsa-logo" />
-      <GoodsSearchBoxContainer />
-      <SearchBoxDivider />
+      {header}
     </Header>
     <Main>
       <Outlet />
@@ -41,5 +42,6 @@ const Header = styled.header`
 
 const Main = styled.main`
   ${flexWrapCss};
+  flex-direction: column;
   margin: 0 auto;
 `;
