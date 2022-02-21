@@ -1,4 +1,3 @@
-import { GoodsFilterType } from '../../common/constants';
 import { HelperColorType } from '../../core/theme';
 
 export const isActiveFilter = <T>(filters: T[], filter: T) => {

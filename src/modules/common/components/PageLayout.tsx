@@ -44,4 +44,6 @@ const Main = styled.main`
   ${flexWrapCss};
   flex-direction: column;
   margin: 0 auto;
+  position: relative;
+  height: 100%;
 `;

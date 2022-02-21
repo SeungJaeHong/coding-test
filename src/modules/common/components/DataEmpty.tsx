@@ -5,9 +5,14 @@ interface DataEmptyProps {
   visible: boolean;
 }
 
-export const DataEmpty: FC<DataEmptyProps> = ({ visible }) => {
+export const DataEmpty: FC<DataEmptyProps> = ({ visible, children }) => {
   if (visible) {
-    return <img src={ICON_DICTIONARY.EMPTY} alt="empty" />;
+    return (
+      <>
+        <img src={ICON_DICTIONARY.EMPTY} alt="empty" />
+        {children}
+      </>
+    );
   }
   return null;
 };

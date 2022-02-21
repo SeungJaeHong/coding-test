@@ -108,9 +108,8 @@ export const SpinnerWrapper = styled.div`
 `;
 
 export const DataEmptyWrapper = styled.div`
-  ${flexWrapCenterCss};
-  flex: 1;
-  height: 100%;
+  margin: 0 auto;
+  margin-top: 200px;
 `;
 
 export const ScrollObserver = styled.div`
